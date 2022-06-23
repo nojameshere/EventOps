@@ -11,8 +11,7 @@ let support = form.getElementsByClassName('.onsiteSupport').value;
 
 //This needs to go inside of an event listener for clicks OR field changes (IE, when a user types)
 attendees = form.getElementsByClassName('.attendee').value;
-
-form.addEventListener('keyup', e => {
+let calculate = () => {
     let attendees = document.querySelector('.attendee').value;
     let accessPoint = document.querySelector('.accessPoint').value;
     let checkbox = document.querySelector('.onsiteSupport');
@@ -53,6 +52,11 @@ form.addEventListener('keyup', e => {
     apCalc = apPreCalc * 0.25;
     let totalCost = apCalc + attendeeCalc + supportCost;
     total.innerHTML = `$${totalCost}`;
-    console.log(totalCost);
-})
+}
 
+form.addEventListener('keyup', e => {
+    calculate();
+});
+form.addEventListener('click', () => {
+    calculate();
+});
